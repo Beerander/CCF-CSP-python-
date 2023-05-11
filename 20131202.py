@@ -23,13 +23,15 @@ Right
 """
 ISBN = input()
 ISBN_list = ISBN.split('-')
-ISBN_list, b = ISBN_list[:-1], int(ISBN_list[-1])
+ISBN_list, b = ISBN_list[:-1], ISBN_list[-1]
 num = ''.join(ISBN_list)
 isbn_sum = 0
 for i, n in enumerate(num):
     isbn_sum += (i+1) * int(n)
 b_hat = isbn_sum % 11
-if b_hat == b:
+if b_hat == 10:
+    b_hat = 'X'
+if str(b_hat) == b:
     print('Right')
 else:
     print('-'.join(ISBN_list) + f'-{b_hat}')
